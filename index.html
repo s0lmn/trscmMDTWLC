@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SITREP Format Quiz</title>
+  <link rel="stylesheet" href="trscmWLCmdt.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>SITREP Format Quiz     
+</h1>
+    <div class="top-bar"> <div id="question"></div> <button class="icon-button" onclick="generateQuestion()" aria-label="Next Question">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+      <path d="M2.01 21l20.99-9L2.01 3v7l15 2-15 2z"/>
+    </svg>
+  </button> 
+</div>
+<div id="subjectRow" style="display: flex; gap: 10px; margin-bottom: 10px;">
+  <input type="text" id="subjectInput" placeholder="Subject" style="flex: 1;" />
+  <input type="text" id="manualTimeInput" placeholder="Time" style="display: none; width: 100px;" />
+  <select id="timeSelect">
+    <option value="">--Time--</option>
+    <option value="0500">0500</option>
+    <option value="0600">0600</option>
+    <option value="1200">1200</option>
+    <option value="1400">1400</option>
+  </select>
+</div>
+    <textarea id="answerInput" placeholder="Type your answer here..." rows="8"></textarea>
+    <button onclick="checkAnswer()">Submit</button>
+    <div id="feedback"></div>
+    <button onclick="showAnswer()">Show Answer</button>
+  </div>
+
+  <script src="trscmWLCmdt.js"></script>
+</body>
+</html>
