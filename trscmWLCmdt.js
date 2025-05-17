@@ -39,7 +39,8 @@ const questionList = ["cashDeclare",
                       "Fallout",
                      "Stand down",
                      "Return",
-                     "Report"];
+                     "Report",
+                     "Extra"];
 let questionIdx = 0;
 
 function generateQuestion() {
@@ -217,7 +218,7 @@ function generateQuestion() {
   const station = randomFromArray(["Yishun", "Canberra", "Boon Lay", "Chinese Garden", "Tuas Link", "Bukit Panjang"]);
 
   questionBox.innerText = `Write occurence for arriving at ${station} station at ${time}`;
-  currentSubject = `Arrived <${station}>`;
+  currentSubject = `Arrived`;
   currentAnswer = `At ${station} Station.`;
   currentTime = time;
   
@@ -231,7 +232,7 @@ function generateQuestion() {
   const time = String(Math.floor(Math.random() * 2400)).padStart(4, "0");
   const station = randomFromArray(["Yishun", "Canberra", "Boon Lay", "Chinese Garden", "Tuas Link", "Bukit Panjang"]);
 
-  questionBox.innerText = `Write occurence for ${breakType === "Short Break" ? "SB" : "OE"} at ${time}`;
+  questionBox.innerText = `Write occurence for ${breakType === "Short Break" ? "SB" : "OE"} at ${time} at ${station} station.`;
   currentSubject = `${breakType}`;
   currentAnswer = `At ${station} Station.`;
   currentTime = time;
@@ -268,7 +269,6 @@ function generateQuestion() {
   } else if (questionIdx === 11) {
     // 🔹 VLP Type
     subjectRow.style.display = "flex";
-    timeSelect.style.display = "none";
 
     const station = randomFromArray(["Yishun", "Toa Payoh", "Bishan"]);
     const arrivalTime = String(Math.floor(Math.random() * 2400)).padStart(4, "0");
@@ -427,11 +427,11 @@ function generateQuestion() {
   const time = String(Math.floor(Math.random() * 2400)).padStart(4, "0");
   const JLNE = isERT ? '':'Service ID: ' + `${ServiceID}`;
 
-  questionBox.innerText = `${callSign} is your call sign. Occurence for ${patrolType} with a regular, ${rank} ${name}, whose callsign is ${k9ertCallSign}, ${PLNE} is ${contact}. ${patrolType} started at ${startTime} hrs and ended at ${endTime} hrs. The time of this occurence is ${time}.${ServiceIDQuestion}`;
+  questionBox.innerText = `${callSign} is your call sign. Occurence for ${patrolType} with a regular, ${rank} ${name}, whose callsign is ${k9ertCallSign}, ${PLNE} is ${contact}. ${patrolType} started at ${startTime} hrs and ended at ${endTime} hrs. The time of this occurence is ${time}. Patrol was done at ${station}. ${ServiceIDQuestion}`;
 
   currentSubject = `State`;
   currentAnswer =
-    `${callSign} performed ${patrolType} at ${station} MRT station and Bus Interchange with the following officer:\n\nIn charge:${rank} ${name}\nCallsign: ${callSign}\n${PLNE}: ${contact}\n${JLNE}\n\nStart Time: ${startTime}hrs\nEnd Time: ${endTime}hrs`;
+    `${callSign} performed ${patrolType} at ${station} MRT station and Bus Interchange with the following officer:\n\nIn charge: ${rank} ${name}\nCallsign: ${k9ertCallSign}\n${PLNE}: ${contact}\n${JLNE}\n\nStart Time: ${startTime}hrs\nEnd Time: ${endTime}hrs`;
   currentDropdown = "";
   currentTime = "";  // validated using manualTimeInput
 
