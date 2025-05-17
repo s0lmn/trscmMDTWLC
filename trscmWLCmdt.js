@@ -278,6 +278,7 @@ function generateQuestion() {
 
     currentSubject = `State`;
     currentAnswer = `Visited 100% of all VLP points at ${station} Station from ${arrivalTime}hrs to ${completionTime}hrs. All in order.`;
+      currentTime = '';
   
   } else if (questionIdx === 12) {
     // 🔹 SCheck Type
@@ -323,7 +324,7 @@ function generateQuestion() {
     } while (callsign1 === callsign2);
 
     const station = randomFromArray(["Yishun", "Toa Payoh", "Bishan"]);
-    const activity = randomFromArray(["point conducting foot patrol", "having OE", "having SB"]);
+    const activity = randomFromArray(["conducting foot patrol", "having OE", "having SB"]);
 
     questionBox.innerText = `You are having your ${ordinal} check on ${callsign2} at ${station} station. Your call sign is ${callsign1}. The resource that you are checking on claims that you checked on them at ${checkTime} hrs. At that timing they are ${activity}.`;
 
@@ -425,13 +426,13 @@ function generateQuestion() {
   const k9ertCallSign = "EDD" + generateRandomDigits(2);
   const PLNE = isERT ? 'Contact No.':'Duty Phone';
   const time = String(Math.floor(Math.random() * 2400)).padStart(4, "0");
-  const JLNE = isERT ? '':'Service ID: ' + `${ServiceID}`;
+  const JLNE = isERT ? '':'\nService ID: ' + `${ServiceID}`;
 
   questionBox.innerText = `${callSign} is your call sign. Occurence for ${patrolType} with a regular, ${rank} ${name}, whose callsign is ${k9ertCallSign}, ${PLNE} is ${contact}. ${patrolType} started at ${startTime} hrs and ended at ${endTime} hrs. The time of this occurence is ${time}. Patrol was done at ${station}. ${ServiceIDQuestion}`;
 
   currentSubject = `State`;
   currentAnswer =
-    `${callSign} performed ${patrolType} at ${station} MRT station and Bus Interchange with the following officer:\n\nIn charge: ${rank} ${name}\nCallsign: ${k9ertCallSign}\n${PLNE}: ${contact}\n${JLNE}\n\nStart Time: ${startTime}hrs\nEnd Time: ${endTime}hrs`;
+    `${callSign} performed ${patrolType} at ${station} MRT station and Bus Interchange with the following officer:\n\nIn charge: ${rank} ${name}\nCallsign: ${k9ertCallSign}\n${PLNE}: ${contact}${JLNE}\n\nStart Time: ${startTime}hrs\nEnd Time: ${endTime}hrs`;
   currentDropdown = "";
   currentTime = "";  // validated using manualTimeInput
 
