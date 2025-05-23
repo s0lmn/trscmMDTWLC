@@ -40,6 +40,9 @@ const questionList = ["cashDeclare",
                      "Stand down",
                      "Return",
                      "Report",
+                      "CC",
+                      "ATC",
+                      "Breakdown",
                      "Extra"];
 let questionIdx = 0;
 
@@ -474,8 +477,8 @@ function generateQuestion() {
     currentSubject = `Return`;
     currentAnswer = `All arms and equipment to the armoury and maintenance office.`;
     currentDropdown = "";
-    
-  }   else {
+
+  } else if (questionIdx === 21) {
     //endOfShift
         const shifts = [
       { name: "1A", time: "0500" },
@@ -489,6 +492,32 @@ function generateQuestion() {
     currentSubject = `Report`;
     currentAnswer = `Off from shift ${shift.name} duties.`;
     currentDropdown = "";
+
+  } else if (questionIdx === 22) {
+    // 🔹 ATC
+    questionBox.innerText = `Type out Occurence for finishing all ATC for the day. You've only cleared one train and it started at 1500 and ended at 1520. Train number is 069. You took this train from Woodlands South to Woodlands.`
+    currentSubject = "State";
+    currentAnswer =
+      `Total Trains Cleared: 01\n`+
+      `Case Attended: 00\n\n`+
+      `Start Time: 1500\n`+
+      `End Time: 1520\n`+
+      `Woodlands South TEL (069)\n`+
+      `Station End: Woodlands\n` +
+      `Train Cleared: 01`;
+    
+    currentDropdown = "";
+    currentTime = "";
+    
+  }   else {
+    // 🔹 CC
+    questionBox.innerText = `Type out the consensual conversation MDT format for one chinese guy at Yishun Station. You approached him for CC as he was waiting there for some time. He informed you that he was waiting for his friend.`;
+
+    currentSubject = "State";
+    currentAnswer =
+      `Resource conducted CC on X01 Chinese Male at Yishun Station. Resource approached MOP as he was waiting at the platform for some time. MOP informed he was waiting for his friend before heading to their next destination. Resource then gave MOP General Crime Prevention advisory and MOP acknowledged accordingly. All in order.`;
+    currentDropdown = "";
+    currentTime = "";
     
   } 
   questionIdx += 1;
