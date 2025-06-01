@@ -43,7 +43,9 @@ const questionList = ["cashDeclare",
                       "CC",
                       "ATC",
                       "Breakdown",
-                     "Extra"];
+                     "Extra",
+                     "extra2",
+                     "Extra3"];
 let questionIdx = 0;
 
 function generateQuestion() {
@@ -104,7 +106,8 @@ function generateQuestion() {
       `2) Powerbank: ${pb}\n` +
       `3) X02 BWC\n` +
       `4) X02 Spare Batteries\n` +
-      `5) X02 Shoulder Mounts`;
+      `5) X02 Shoulder Mounts\n` +
+      `6) X03 Shoulder Lights`;
     currentDropdown = "";
     currentTime = time;
 
@@ -135,7 +138,7 @@ function generateQuestion() {
     questionBox.innerText = `Write occurence for spark test conducted at ${time} HRS.`;
 
     currentSubject = `State`;
-    currentAnswer = `Spark test concluded, all in order.`;
+    currentAnswer = `Spark test conducted, all in order.`;
     currentDropdown = "";
     currentTime = time;
 
@@ -172,9 +175,9 @@ function generateQuestion() {
     const AGLrank = "SC/SGT";
     const crewRank = "SC/CPL";
 
-    const GLtetra = "222" + generateRandomDigits(3);
-    const AGLtetra = "222" + generateRandomDigits(3);
-    const crewTetra = "222" + generateRandomDigits(3);
+    const GLtetra = "222 " + generateRandomDigits(3);
+    const AGLtetra = "222 " + generateRandomDigits(3);
+    const crewTetra = "222 " + generateRandomDigits(3);
 
     const GLhp = "8888 2222";
 
@@ -257,17 +260,15 @@ function generateQuestion() {
   // 🔹 Mistake/Correction Type (no answer box)
   subjectRow.style.display = "flex";
   document.getElementById("timeSelect").style.display = "none";
-  document.getElementById("manualTimeInput").style.display = "inline-block";
-  document.getElementById("answerInput").style.display = "none";
-  document.getElementById("feedback").innerText = "Details vary according to what you are trying to correct.";
     const time = String(Math.floor(Math.random() * 2400)).padStart(4, "0");
     
 
   const sn = Math.floor(Math.random() * 90 + 10); // two-digit S/N
-  questionBox.innerText = `Write the subject for when you want to make a correction to S/N ${sn} at timing ${time}`;
+  questionBox.innerText = `Write the subject for when you want to make a correction to S/N ${sn}. It is supposed to be a 10-7 MDT state at Yishun Station at timing ${time}HRS`;
   currentSubject = `Correction to S/N ${sn}`;
-  currentAnswer = ""; // no answer checking
-  currentTime = time;
+  currentAnswer = `ARRIVED@${time}HRS\n\n`+
+    `At Yishun Station.`; // no answer checking
+  currentTime = ``;
     
   } else if (questionIdx === 11) {
     // 🔹 VLP Type
@@ -332,7 +333,7 @@ function generateQuestion() {
     questionBox.innerText = `You are having your ${ordinal} check on ${callsign2} at ${station} station. Your call sign is ${callsign1}. The resource that you are checking on claims that you checked on them at ${checkTime} hrs. At that timing they are ${activity}.`;
 
     currentSubject = `S/Check ${serialNumber}`;
-    currentAnswer = `By ${callsign1} on ${callsign2} at ${station} Station. Resource was at point ${activity}. Wellbeing was checked and no complaints from officers. All in order.`;
+    currentAnswer = `By ${callsign1} on ${callsign2} at ${station} Station. Resource was at point ${activity}. Well-being was checked and no complaints from officers. All in order.`;
     currentTime = checkTime;
   
   } else if (questionIdx === 14) {
@@ -367,7 +368,7 @@ function generateQuestion() {
 
   
   } else if (questionIdx === 15) {
-    // ATC
+    // TCC
   const callSign1 = "Y2F" + Math.floor(Math.random() * 10) + "C";
   let callSign2 = "Y2F" + Math.floor(Math.random() * 10) + "C";
   while (callSign2 === callSign1) {
@@ -383,10 +384,9 @@ function generateQuestion() {
 
   const startTime = generateRandomDigits(4);
   const endTime = generateRandomDigits(4);
-  const hasTwoCallSigns = Math.random() < 0.5;
-  const jjj = hasTwoCallSigns ? `${callSign1} and ${callSign2}` : callSign1;
+  const jjj =`${callSign1} and ${callSign2}`;
 
-  questionBox.innerText = `Write occurence for TTC conducted by ${jjj} From ${fromStation} station to ${toStation} station from ${startTime} hrs to ${endTime} hrs.`;
+  questionBox.innerText = `Write occurence for TCC conducted by ${jjj} From ${fromStation} station to ${toStation} station from ${startTime} hrs to ${endTime} hrs.`;
   currentSubject = "State";
   currentAnswer = `TCC conducted by ${jjj} from ${fromStation} station to ${toStation} station from ${startTime}hrs to ${endTime}hrs.`;
   currentDropdown = "";
@@ -509,7 +509,32 @@ function generateQuestion() {
     currentDropdown = "";
     currentTime = "";
     
-  }   else {
+  } else if (questionIdx === 23) {
+    // 🔹 INCIDENT1
+    questionBox.innerText = `TYPE OUT BRIEF FACTS FORMAT.`
+    currentSubject = "Brief Facts";
+    currentAnswer =
+      `Upon arrival, res met up with A1. A1 infd res that A1.`
+    
+    currentDropdown = "";
+    currentTime = "";
+    
+  }  else if (questionIdx === 24) {
+    // 🔹 INCIDENT2
+    questionBox.innerText = `Type out Occurence for finishing all ATC for the day. You've only cleared one train and it started at 1500 and ended at 1520. Train number is 069. You took this train from Woodlands South to Woodlands.`
+    currentSubject = "State";
+    currentAnswer =
+      `Total Trains Cleared: 01\n`+
+      `Case Attended: 00\n\n`+
+      `Start Time: 1500\n`+
+      `End Time: 1520\n`+
+      `Woodlands South TEL (069)\n`+
+      `Station End: Woodlands\n` +
+      `Train Cleared: 01`;
+    
+    currentDropdown = "";
+    currentTime = "";
+} else {
     // 🔹 CC
     questionBox.innerText = `Type out the consensual conversation MDT format for one chinese guy at Yishun Station. You approached him for CC as he was waiting there for some time. He informed you that he was waiting for his friend.`;
 
