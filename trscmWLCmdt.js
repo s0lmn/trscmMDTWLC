@@ -266,7 +266,7 @@ function generateQuestion() {
   const sn = Math.floor(Math.random() * 90 + 10); // two-digit S/N
   questionBox.innerText = `Write the subject for when you want to make a correction to S/N ${sn}. It is supposed to be a 10-7 MDT state at Yishun Station at timing ${time}HRS`;
   currentSubject = `Correction to S/N ${sn}`;
-  currentAnswer = `ARRIVED@${time}HRS\n\n`+
+  currentAnswer = `ARRIVED@${time}hrs\n\n`+
     `At Yishun Station.`; // no answer checking
   currentTime = ``;
     
